@@ -114,12 +114,12 @@ end)
 function GetPolyzonePoints(name, pointsFormat, z_coords)
     local points = lib.callback('PolyCreator:requestpolyzone', false, name)
     local result = {}
-    if pointsFormat == 'ox_lib' then
+    if pointsFormat == 'ox' then
         for j=1, #points do
             local point = points[j]
             table.insert(result, vector3(point.x, point.y, z_coords))
         end
-    elseif pointsFormat == 'qb-target' then
+    elseif pointsFormat == 'qb' then
         for j=1, #points do
             local point = points[j]
             table.insert(result, vector2(point.x, point.y))

@@ -3,7 +3,7 @@ lib.addCommand('CreateZone', {
     params = {
         {name = 'func', help = 'create|save|cancel'},
     },
-    restricted = Config.GangZoneCommandPermissions,
+    restricted = 'group.admin'
 }, function(source, args)
     local func = args.func
     if func == 'create' then
@@ -30,7 +30,7 @@ AddEventHandler('PolyCreator:savepolyzone', function(name, points)
     end
 end)
 
-lib.callback.register('PolyCreator:checkExists', function(source, name)
+lib.callback.register('PolyCreator:checkExists', function(name)
     local result = MySQL.Sync.fetchAll('SELECT * FROM `polyzones` WHERE name = ?', {name})
     if result[1] ~= nil then
         return true

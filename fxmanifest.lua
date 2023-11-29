@@ -8,7 +8,7 @@ author 'Kat2Cat -- Discord: kat2cat'
 
 shared_scripts { 
     '@ox_lib/init.lua',
-    'config/*.lua', 
+    'config.lua', 
 }
 
 client_scripts {

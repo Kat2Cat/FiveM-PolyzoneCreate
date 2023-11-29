@@ -64,7 +64,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-function drawZone(p1, p2, minZ, maxZ, r, g, b, a)
+function DrawWall(p1, p2, minZ, maxZ, r, g, b, a)
     local bottomLeft = vector3(p1.x, p1.y, minZ)
     local topLeft = vector3(p1.x, p1.y, maxZ)
     local bottomRight = vector3(p2.x, p2.y, minZ)
@@ -94,7 +94,7 @@ function drawZone(points)
       if i < #points then
         local p2 = points[i+1]
         DrawLine(point.x, point.y, maxZ, p2.x, p2.y, maxZ, oR, oG, oB, 184)
-        drawZone(point, p2, minZ, maxZ, wR, wG, wB, 48)
+        DrawWall(point, p2, minZ, maxZ, wR, wG, wB, 48)
       end
     end
   
@@ -102,7 +102,7 @@ function drawZone(points)
       local firstPoint = points[1]
       local lastPoint = points[#points]
       DrawLine(firstPoint.x, firstPoint.y, maxZ, lastPoint.x, lastPoint.y, maxZ, oR, oG, oB, 184)
-      drawZone(firstPoint, lastPoint, minZ, maxZ, wR, wG, wB, 48)
+      DrawWall(firstPoint, lastPoint, minZ, maxZ, wR, wG, wB, 48)
     end
 end
 
@@ -112,7 +112,7 @@ AddEventHandler('PolyCreator:notify', function(title, msg, type)
 end)
 
 function GetPolyzonePoints(name, pointsFormat, z_coords)
-    local points = lib.callback('PolyCreator:requestpolyzone', false, name)
+    local points = lib.callback.await('PolyCreator:requestpolyzone', 100, name)
     local result = {}
     if pointsFormat == 'ox' then
         for j=1, #points do

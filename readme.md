@@ -1,10 +1,3 @@
-# PolyzoneCreator
-
-## Description
-
-This script can create polyzone points and store it into sql.
-
-Showcase: coming soon!
 ## Dependency
 [ox_lib](https://github.com/overextended/ox_lib)
 
@@ -21,7 +14,7 @@ GetPolyzonePoints(name, pointsFormat, z_coords)
 `/CreateZone cancel` end creating mode
 `/CreateZone save` end creating mode and save the points
 
-####Example
+#### Example
 ```lua
 -- ox_target
 local points = exports['PolyzoneCreator']:GetPolyzonePoints('test', 'ox', 30.0)
